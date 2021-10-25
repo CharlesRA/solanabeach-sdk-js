@@ -30,4 +30,10 @@ export class SolanaBeachSDK {
   public async fetchBlockByBlockNumber(blockNumber: number): Promise<Block> {
     return await this.apiClient.getRequest(`/block/${blockNumber}`)
   }
+  /**
+   * Fetch 50 latest blocks ordered by block number
+   */
+  public async fetchLatestBlocks(props: { limit?: string; cursor?: string }): Promise<Block[]> {
+    return await this.apiClient.getRequest(`/latest-blocks`, props)
+  }
 }

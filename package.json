@@ -1,0 +1,29 @@
+{
+  "name": "solanabeach-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/solanabeach-sdk.js",
+  "types": "dist/solanabeach-sdk.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "find '.' \\( \\( -type d -a \\( -name node_modules -o -name dist \\) \\) -o \\( -type f -a -name tsconfig.tsbuildinfo \\) \\) -exec rm -rf {} +",
+    "pretty": "prettier --write --config ./.prettierrc.yaml --ignore-path ./.prettierignore '**/*.{ts,json}'",
+    "lint:fix": "eslint --config ./.eslintrc.yaml '**/*.{ts,json}' --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlesRA/solanabeach-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlesRA/solanabeach-sdk/issues"
+  },
+  "homepage": "https://github.com/CharlesRA/solanabeach-sdk#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  }
+}

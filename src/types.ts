@@ -8,6 +8,34 @@ interface Identity {
   address: string
 }
 
+interface Program {
+  count: number
+  programId: Identity
+  instructions: {
+    NewOrderV3?: number
+    ConsumeEvents?: number
+    CancelOrderByClientIdV2?: number
+    Transfer?: number
+    CloseAccount?: number
+    InitializeAccount?: number
+    Memo?: number
+    CreateAssociatedTokenAccount?: number
+    Burn?: number
+    MintToChecked?: number
+    Revoke?: number
+    TransferChecked: number
+    SetAuthority: number
+    Approve: number
+    MintTo: number
+    InitializeMint: number
+  } // TODO fill this
+}
+
+export interface TopPrograms {
+  window: number
+  programs: Program[]
+}
+
 export interface Block {
   blocknumber: number
   blockhash: string
@@ -38,18 +66,5 @@ export interface Block {
     image?: string
     nodePubkey: string
   }
-  programstats: {
-    count: number
-    programId: Identity
-    instructions: {
-      NewOrderV3?: number
-      ConsumeEvents?: number
-      CancelOrderByClientIdV2?: number
-      Transfer?: number
-      CloseAccount?: number
-      InitializeAccount?: number
-      Memo?: number
-      CreateAssociatedTokenAccount?: number
-    } // TODO fill this
-  }[]
+  programstats: Program[]
 }

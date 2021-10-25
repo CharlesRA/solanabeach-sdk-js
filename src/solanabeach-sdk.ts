@@ -1,5 +1,5 @@
 import { ApiClient } from "./api-client"
-import { Block } from "./types"
+import { Block, TopPrograms } from "./types"
 export * from "./types"
 
 export class SolanaBeachSDK {
@@ -33,7 +33,15 @@ export class SolanaBeachSDK {
   /**
    * Fetch 50 latest blocks ordered by block number
    */
-  public async fetchLatestBlocks(props: { limit?: string; cursor?: string }): Promise<Block[]> {
+  public async fetchLatestBlocks(props?: { limit?: string; cursor?: string }): Promise<Block[]> {
     return await this.apiClient.getRequest(`/latest-blocks`, props)
+  }
+
+  /**
+   * Fetch top program stats for last 1000 blocks
+   */
+
+  public async fetchTopPrograms(): Promise<TopPrograms> {
+    return await this.apiClient.getRequest(`/top-programs`)
   }
 }

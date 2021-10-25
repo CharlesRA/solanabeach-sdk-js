@@ -3,6 +3,11 @@ interface Blocktime {
   relative: number
 }
 
+interface Identity {
+  name: string
+  address: string
+}
+
 export interface Block {
   blocknumber: number
   blockhash: string
@@ -28,9 +33,23 @@ export interface Block {
   proposer: string
   ondemand: boolean
   proposerData: {
-    name: string
-    website: string
-    image: string
+    name?: string
+    website?: string
+    image?: string
     nodePubkey: string
   }
+  programstats: {
+    count: number
+    programId: Identity
+    instructions: {
+      NewOrderV3?: number
+      ConsumeEvents?: number
+      CancelOrderByClientIdV2?: number
+      Transfer?: number
+      CloseAccount?: number
+      InitializeAccount?: number
+      Memo?: number
+      CreateAssociatedTokenAccount?: number
+    } // TODO fill this
+  }[]
 }

@@ -14,6 +14,8 @@ export class SolanaBeachSDK {
     this.apiClient = new ApiClient(apiKey, apiBaseUrl)
   }
 
+  //                                    BLOCK                                    //
+
   /**
    * Fetch block by block hash if the given block exists
    * @param blockHash Block number.
@@ -43,5 +45,15 @@ export class SolanaBeachSDK {
 
   public async fetchTopPrograms(): Promise<TopPrograms> {
     return await this.apiClient.getRequest(`/top-programs`)
+  }
+  //                                    Account                                    //
+
+  /**
+   * Fetch account data
+   * @param pubkey Account address
+   */
+
+  public async fetchAccountData(pubkey: string): Promise<Account> {
+    return await this.apiClient.getRequest(`/account/${pubkey}`)
   }
 }

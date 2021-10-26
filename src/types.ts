@@ -31,6 +31,66 @@ interface Program {
   } // TODO fill this
 }
 
+interface Address {
+  address: string
+}
+
+interface Mint {
+  name?: string
+  ticker?: string
+  logo?: string
+  meta?: { url: string }
+  cmcId?: string
+  address: string
+}
+
+export interface Account {
+  type: "unknown" | "token" | "stake" | string
+  value: {
+    base: {
+      address: Address
+      balance: number
+      executable: boolean
+      owner: Identity | null
+      rentEpoch: number
+      dataSize: number
+    }
+    extended: {
+      authorized?: {
+        staker: Address
+        withdrawer: Address
+      }
+      lockup?: {
+        timestamp: number
+        epoch: number
+        custodian: Address
+      }
+      activationEpoch?: number
+      deactivationEpoch?: number
+      validator?: string
+      validatorInfo?: {
+        name: string
+        website: string
+        identityPubkey: string
+        keybaseUsername: string
+        details: string
+        image: string
+      }
+      mint?: Mint
+      owner?: Address
+      amount?: number
+      delegate?: Identity
+      delegatedAmount?: number
+      closeAuthority?: Identity
+      state?: "Initialized" | "active" | string
+      decimals?: number
+      stake: number
+      activeStake: number
+      inactiveStake: number
+    }
+  }
+}
+
 export interface TopPrograms {
   window: number
   programs: Program[]

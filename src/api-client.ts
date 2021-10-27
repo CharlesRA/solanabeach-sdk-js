@@ -6,7 +6,6 @@ export class ApiClient {
 
   public async getRequest(path: string, props?: Record<string, string>) {
     let queryParameters = new URLSearchParams(props)
-    console.log(this.apiBaseUrl + path + queryParameters.toString())
     const res = await requestPromise.get({
       uri: this.apiBaseUrl + path + `?${queryParameters.toString()}`,
       headers: {

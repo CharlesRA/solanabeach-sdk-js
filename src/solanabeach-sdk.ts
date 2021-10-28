@@ -1,5 +1,5 @@
 import { ApiClient } from "./api-client"
-import { Block, TopPrograms, Account, StakeReward, Token, Transaction } from "./types"
+import { Block, TopPrograms, Account, StakeReward, Token, Transaction, StakeAccounts } from "./types"
 export * from "./types"
 
 export class SolanaBeachSDK {
@@ -89,5 +89,18 @@ export class SolanaBeachSDK {
     props?: { limit?: string; offset?: string; cursor?: string },
   ): Promise<Transaction[]> {
     return await this.apiClient.getRequest(`/account/${pubkey}/transactions`, props)
+  }
+
+  /**
+   * Fetch stake accounts owned by the pubkey
+   * @param pubkey Account address
+   * @param limit Result limit (max 1000)
+   * @param offset Result offset
+   */
+  public async fetchStakeAccounts(
+    pubkey: string,
+    props?: { limit?: string; offset?: string },
+  ): Promise<StakeAccounts[]> {
+    return await this.apiClient.getRequest(`/account/${pubkey}/stakes`, props)
   }
 }

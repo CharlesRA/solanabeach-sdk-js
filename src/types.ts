@@ -192,6 +192,47 @@ interface InstructionTypes {
   Swap?: InstructionSwap
 }
 
+export interface StakeAccounts {
+  totalPages: number
+  data: {
+    pubkey: Address
+    lamports: number
+    data: {
+      state: number
+      meta: {
+        rent_exempt_reserve: number
+        authorized: {
+          staker: Address
+          withdrawer: Address
+        }
+        lockup: {
+          unix_timestamp: number
+          epoch: number
+          custodian: Identity
+        }
+      }
+      stake: {
+        delegation: {
+          voter_pubkey: Address
+          stake: number
+          activation_epoch: number
+          deactivation_epoch: number
+          warmup_cooldown_rate: number
+          validatorInfo: {
+            name: string
+            website: string
+            identityPubkey: string
+            keybaseUsername: string
+            details: string
+            image: string
+          }
+        }
+        credits_observed: number
+      }
+    }
+  }[]
+}
+
 export interface Transaction {
   accounts: { account: Address }[]
   transactionHash: string
